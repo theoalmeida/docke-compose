@@ -1,0 +1,35 @@
+postgres:
+  image: postgres
+  expose:
+    - "5432"
+  ports:
+    - "5432:5432"
+  environment:
+    - POSTGRES_PORT_5432_TCP_ADDR=127.0.0.1
+    - POSTGRES_PORT_5432_TCP_PORT=5432
+    - POSTGRES_PASSWORD=123
+    - POSTGRES_USER=theo
+  volumes:
+    - /var/lib/postgresql/data
+mysql:
+  image: mysql:5.7
+  ports:
+    - "3306:3306"
+  expose:
+    - "3306"
+  environment: 
+    - MYSQL_PORT_3306_TCP_ADDR=127.0.0.1
+    - MYSQL_PORT_3306_TCP_PORT=3306
+    - MYSQL_ROOT_PASSWORD=1234
+    - MYSQL_DATABASE=cupcake
+    - MYSQL_USER=theo
+    - MYSQL_PASSWORD=010982
+  volumes:
+    - ~/mib/mysql:/var/lib/mysql
+redis:
+  image: redis:3.0
+  ports:
+    - "6379:6379"
+  command: redis-server
+  volumes:
+    - /var/lib/redis/data
